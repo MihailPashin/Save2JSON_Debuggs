@@ -1,5 +1,5 @@
 dependency-injector==4.41.0
 pandas==2.2.2
-
+yake
 
 

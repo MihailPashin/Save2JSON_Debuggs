@@ -1,5 +1,6 @@
 from Containers.DF_Pandas import Pandas_Container
 from Containers.List2JSON import Save2JSON_Container
+from Containers.Yake import Yake_Container
 import os
 
 if __name__ == "__main__" :
@@ -20,8 +21,11 @@ if __name__ == "__main__" :
     
     json_saver.init_convert().save_to_json(relative_path,'entire_df.json')
 
-
-
+    yake_boundary = Yake_Container().boundary()
+    keywords = yake_boundary.get_keywords(reviews) ## Проверка отзывов на словарь + Извлечение ключ. фраз.
+    print('Ключевые фразы извлечены и приведены к формату ', type(keywords))
+    json_saver.config.nested_list.from_value(keywords)
+    json_saver.init_convert().save_to_json(relative_path,'yake_keywords_extract.json')
     '''
   
     for entry in list_of_df:
